@@ -1,18 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navbar, NavbarBrand } from 'reactstrap';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import Players from './Players';
+import Duration from './Duration';
+import Age from './Age';
+import Curve from './Curve';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      players: 1,
+      age: 4,
+      duration: 1,
+      curve: 1
+    }
+  }
+
+  increment(criteria) {
+    this.setState(prevState => {
+      let nextState = prevState;
+      nextState[criteria] = nextState[criteria] + 1;
+      return nextState;
+    })
+  }
+
+  decrement(criteria) {
+    this.setState(prevState => {
+      let nextState = prevState;
+      nextState[criteria] = nextState[criteria] - 1;
+      return nextState;
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Navbar color="light">
+          <NavbarBrand>
+            gamechoice
+          </NavbarBrand>
+        </Navbar>
+        <Switch>
+          <Route exact path='/' render={() => <Home criteria={this.state} />} />
+          <Route
+            path='/players'
+            render={() => <Players criteria={this.state} increment={this.increment.bind(this)} decrement={this.decrement.bind(this)} />}
+          />
+          <Route
+            path='/age'
+            render={() => <Age criteria={this.state} increment={this.increment.bind(this)} decrement={this.decrement.bind(this)} />}
+          />
+        </Switch>
       </div>
     );
   }
