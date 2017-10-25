@@ -10,7 +10,7 @@ import Curve from './Curve';
 import Results from './Results';
 import Footer from './Footer';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
-
+import axios from 'axios';
 
 class App extends Component {
 
@@ -48,6 +48,12 @@ class App extends Component {
     })
   }
 
+  getGame() {
+    console.log('this.state', this.state);
+    axios.get(`http://localhost:3000/result/${this.state.players}/${this.state.age}/${this.state.duration}/${this.state.curve}/`)
+    .then(result => { console.log(result) })
+  }
+
   render() {
     return (
       <div className="text-dark">
@@ -78,7 +84,7 @@ class App extends Component {
           />
           <Route
             path='/curve'
-            render={() => <Curve setCriteria={this.setCriteria.bind(this)} />}
+            render={() => <Curve setCriteria={this.setCriteria.bind(this)} getGame={this.getGame.bind(this)} />}
           />
           <Route
             path='/results'

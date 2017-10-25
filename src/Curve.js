@@ -46,6 +46,11 @@ const Curve = props => (
         </Col>
       </Row>
     </Container>
+    <Button
+      onClick={() => props.getGame()}
+    >
+      Get game
+    </Button>
     <Footer prev="/duration" next="/results" />
   </div>
 )
