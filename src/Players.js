@@ -5,12 +5,12 @@ import Footer from './Footer';
 
 const Players = props => (
   <div>
-    <Container className="text-center">
-      <Row className="mt-5">
+    <Container className="text-center p-5">
+      <Row className="p-5 mt-5">
         <Col>
-          <h1>
-            How many players are in your group?
-          </h1>
+          <h3>
+            How many people will be playing?
+          </h3>
         </Col>
       </Row>
       <Row className="mt-5">
@@ -21,6 +21,13 @@ const Players = props => (
             increment={props.increment}
             decrement={props.decrement}
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h5>
+            people
+          </h5>
         </Col>
       </Row>
     </Container>

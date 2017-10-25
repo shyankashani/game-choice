@@ -1,35 +1,32 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import Plus from 'react-icons/lib/go/plus';
+import Dash from 'react-icons/lib/go/dash';
 
 const Input = props => (
-  <div className="d-flex justify-content-center">
-    <Button
-      outline
-      color="primary"
-      size="lg"
-      className="p-5"
+  <div className="d-flex justify-content-center" >
+    <div
+      className="rounded-circle bg-light"
+      style={{width: "106px"}}
       onClick={() => props.decrement(props.criteria)}
       >
-      <h1>
-        -
-      </h1>
-    </Button>
+      <div style={{fontSize: "60px"}} className="text-primary">
+        <Dash />
+      </div>
+    </div>
 
-    <h1 className="p-5">
+    <div style={{fontSize: "68px"}} className="ml-5 mr-5 text-primary">
       {props.data}
-    </h1>
+    </div>
 
-    <Button
-      outline
-      color="primary"
-      size="lg"
-      className="p-5"
+    <div
+      className="rounded-circle bg-light"
+      style={{width: "106px"}}
       onClick={() => props.increment(props.criteria)}
       >
-      <h1>
-        +
-      </h1>
-    </Button>
+      <div style={{fontSize: "60px"}} className="text-primary">
+        <Plus />
+      </div>
+    </div>
   </div>
 )
 
