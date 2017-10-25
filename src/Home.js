@@ -14,7 +14,7 @@ const Home = props => (
     <Row className="mt-5 p-5">
       <Col>
         <Link to="/players">
-          <Button color="primary" className="pl-4 pr-4 pt-2 pb-2">
+          <Button size="lg" color="primary" className="pl-4 pr-4 pt-2 pb-2">
               Get Started
           </Button>
         </Link>

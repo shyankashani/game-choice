@@ -7,8 +7,10 @@ import Players from './Players';
 import Duration from './Duration';
 import Age from './Age';
 import Curve from './Curve';
+import Results from './Results';
 import Footer from './Footer';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
+
 
 class App extends Component {
 
@@ -34,6 +36,14 @@ class App extends Component {
     this.setState(prevState => {
       let nextState = prevState;
       nextState[criteria] = nextState[criteria] - 1;
+      return nextState;
+    })
+  }
+
+  setCriteria(criteria, payload) {
+    this.setState(prevState => {
+      let nextState = prevState;
+      nextState[criteria] = payload;
       return nextState;
     })
   }
@@ -64,11 +74,15 @@ class App extends Component {
           />
           <Route
             path='/duration'
-            render={() => <Duration criteria={this.state} increment={this.increment.bind(this)} decrement={this.decrement.bind(this)} />}
+            render={() => <Duration setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
             path='/curve'
-            render={() => <Curve criteria={this.state} increment={this.increment.bind(this)} decrement={this.decrement.bind(this)} />}
+            render={() => <Curve setCriteria={this.setCriteria.bind(this)} />}
+          />
+          <Route
+            path='/results'
+            render={() => <Results criteria={this.state} />}
           />
       </Switch>
       </div>

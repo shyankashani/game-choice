@@ -1,26 +1,48 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import Input from './Input';
+import { Container, Row, Col, Button } from 'reactstrap';
 import Footer from './Footer';
 
-const Duration = props => (
+const Curve = props => (
   <div>
-    <Container className="text-center">
-      <Row className="mt-5">
+    <Container className="text-center p-5">
+      <Row className="p-5 mt-5">
         <Col>
-          <h1>
+          <h3>
             How steep should the learning curve be?
-          </h1>
+          </h3>
         </Col>
       </Row>
-      <Row className="mt-5">
+      <Row className="mt-5 p-5">
         <Col>
-          <Input
-            criteria="curve"
-            data={props.criteria.curve}
-            increment={props.increment}
-            decrement={props.decrement}
-          />
+          <div className="d-flex justify-content-center" >
+            <Button
+              outline
+              color="success"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('curve', 1)}
+            >
+              Gentle
+            </Button>
+            <Button
+              outline
+              color="warning"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('curve', 2)}
+            >
+              Medium
+            </Button>
+            <Button
+              outline
+              color="danger"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('curve', 3)}
+            >
+              Brutal
+            </Button>
+          </div>
         </Col>
       </Row>
     </Container>
@@ -28,4 +50,4 @@ const Duration = props => (
   </div>
 )
 
-export default Duration;
+export default Curve;

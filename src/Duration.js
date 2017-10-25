@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import InputTwo from './InputTwo';
+import { Container, Row, Col, Button } from 'reactstrap';
 import Footer from './Footer';
 
 const Duration = props => (
@@ -15,12 +14,44 @@ const Duration = props => (
       </Row>
       <Row className="mt-5 p-5">
         <Col>
-          <InputTwo
-            criteria="duration"
-            data={props.criteria.duration}
-            increment={props.increment}
-            decrement={props.decrement}
-          />
+          <div className="d-flex justify-content-center" >
+            <Button
+              outline
+              color="success"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('duration', 1)}
+            >
+              &#60; 15 mins
+            </Button>
+            <Button
+              outline
+              color="primary"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('duration', 2)}
+            >
+                15-45 min
+            </Button>
+            <Button
+              outline
+              color="warning"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('duration', 3)}
+            >
+              45-90 min
+            </Button>
+            <Button
+              outline
+              color="danger"
+              className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+              size="lg"
+              onClick={() => props.setCriteria('duration', 4)}
+            >
+              90 mins +
+            </Button>
+          </div>
         </Col>
       </Row>
     </Container>

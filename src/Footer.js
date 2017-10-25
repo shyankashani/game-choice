@@ -11,9 +11,11 @@ const Footer = props => (
         </Button>
       </Link>
       <Link to={props.next}>
-        <Button color="primary">
-            Continue
-        </Button>
+        { props.next === '/results'
+          ? <Button color="success"> Complete </Button>
+          : <Button color="primary"> Continue </Button>
+        }
+
       </Link>
     </Navbar>
   </div>
