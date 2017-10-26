@@ -6,8 +6,8 @@ const Footer = props => (
   <div>
     <Navbar color="light" className="fixed-bottom p-3">
       <Link to={props.prev}>
-        <Button className="pl-4 pr-4 pt-2 pb-2 text-muted" color="muted">
-            Go back
+        <Button className="pt-2 pb-2 text-muted" color="light">
+            &larr; Go back
         </Button>
       </Link>
       <Link to={props.next}>
