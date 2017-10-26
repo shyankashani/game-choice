@@ -7,7 +7,7 @@ import Players from './Players';
 import Duration from './Duration';
 import Age from './Age';
 import Curve from './Curve';
-import Results from './Results';
+import Result from './Result';
 import Footer from './Footer';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
@@ -17,10 +17,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: 1,
-      age: 4,
-      duration: 1,
-      curve: 1
+      players: 4,
+      age: 8,
+      duration: 2,
+      curve: 2,
+      result: {
+        name: '',
+        image_url: 'https://www.onegoalgraduation.org/wp-content/uploads/2016/07/gray_square.png',
+        description: ''
+      }
     }
   }
 
@@ -49,9 +54,11 @@ class App extends Component {
   }
 
   getGame() {
-    console.log('this.state', this.state);
     axios.get(`http://localhost:3000/result/${this.state.players}/${this.state.age}/${this.state.duration}/${this.state.curve}/`)
-    .then(result => { console.log(result) })
+    .then(result => {
+      console.log(result.data[0]);
+      this.setState({ result: result.data[0] })
+    })
   }
 
   render() {
@@ -84,11 +91,11 @@ class App extends Component {
           />
           <Route
             path='/curve'
-            render={() => <Curve setCriteria={this.setCriteria.bind(this)} getGame={this.getGame.bind(this)} />}
+            render={() => <Curve setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
-            path='/results'
-            render={() => <Results criteria={this.state} />}
+            path='/result'
+            render={() => <Result result={this.state.result} getGame={this.getGame.bind(this)}  />}
           />
       </Switch>
       </div>

@@ -11,7 +11,7 @@ const Footer = props => (
         </Button>
       </Link>
       <Link to={props.next}>
-        { props.next === '/results'
+        { props.next === '/result'
           ? <Button color="success"> Complete </Button>
           : <Button color="primary"> Continue </Button>
         }

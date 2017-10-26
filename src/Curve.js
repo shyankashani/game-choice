@@ -14,7 +14,7 @@ const Curve = props => (
       </Row>
       <Row className="mt-5 p-5">
         <Col>
-          <div className="d-flex justify-content-center" >
+          <div className="d-flex justify-content-center">
             <Button
               outline
               color="success"
@@ -46,12 +46,7 @@ const Curve = props => (
         </Col>
       </Row>
     </Container>
-    <Button
-      onClick={() => props.getGame()}
-    >
-      Get game
-    </Button>
-    <Footer prev="/duration" next="/results" />
+    <Footer prev="/duration" next="/result" />
   </div>
 )
 
