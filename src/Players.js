@@ -31,7 +31,7 @@ const Players = props => (
         </Col>
       </Row>
     </Container>
-    <Footer prev="/" next="/age" />
+    <Footer prev="/" next="/age" curr="/players" criteria={props.criteria} />
   </div>
 )
 

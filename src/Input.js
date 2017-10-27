@@ -3,7 +3,7 @@ import Plus from 'react-icons/lib/go/plus';
 import Dash from 'react-icons/lib/go/dash';
 
 const Input = props => (
-  <div className="d-flex justify-content-center" >
+  <div className="d-flex justify-content-center">
     <div
       className="rounded-circle bg-light"
       style={{width: "106px"}}

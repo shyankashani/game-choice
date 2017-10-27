@@ -55,7 +55,7 @@ const Duration = props => (
         </Col>
       </Row>
     </Container>
-    <Footer prev="/age" next="/complexity" />
+    <Footer prev="/age" next="/complexity" curr="/duration" criteria={props.criteria} />
   </div>
 )
 

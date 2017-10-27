@@ -8,7 +8,7 @@ const Complexity = props => (
       <Row className="p-5 mt-5">
         <Col>
           <h3>
-            How steep should the learning complexity be?
+            How steep should the learning curve be?
           </h3>
         </Col>
       </Row>
@@ -46,7 +46,7 @@ const Complexity = props => (
         </Col>
       </Row>
     </Container>
-    <Footer prev="/duration" next="/result" />
+    <Footer prev="/duration" next="/result" curr="/complexity" criteria={props.criteria} />
   </div>
 )
 

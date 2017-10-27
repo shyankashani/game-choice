@@ -109,11 +109,11 @@ class App extends Component {
           />
           <Route
             path='/duration'
-            render={() => <Duration setCriteria={this.setCriteria.bind(this)} />}
+            render={() => <Duration criteria={this.state} setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
             path='/complexity'
-            render={() => <Complexity setCriteria={this.setCriteria.bind(this)} />}
+            render={() => <Complexity criteria={this.state} setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
             path='/result'
