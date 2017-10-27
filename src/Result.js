@@ -22,49 +22,57 @@ class Result extends Component {
   }
 
   render(){
+
+    const mins = [];
+    if (this.props.result.duration === 1) {
+      mins.push('< 15 mins')
+    } else if (this.props.result.duration === 2) {
+      mins.push('15-45 min')
+    } else if (this.props.result.duration === 3) {
+      mins.push('45-90 min')
+    } else {
+      mins.push('90 mins +')
+    }
+
+    const age = `age ${this.props.result.age}+`;
+
+    const players = `${this.props.result.minPlayers}-${this.props.result.maxPlayers} players`;
+
     return (
       <div>
         <Container className="text-center p-5">
-          <Row className="mt-5 p-5">
-            <Col>
-              <h3>
-                &nbsp;
-              </h3>
-            </Col>
-          </Row>
-          <Row>
+          <Row className="mt-5 pt-5">
             <div className="d-flex justify-content-center pl-5 pr-5 text-left">
               <div>
-                <img src="http://via.placeholder.com/300.png/09f/fff" style={{width: "200px"}} />
+                <img src={this.props.result.image} style={{width: "240px"}} />
               </div>
               <div className="pl-5">
-                <div>
-                  <h3>
-                    {this.props.result.name}
-                  </h3>
-                </div>
+                <h3 className="mb-3">
+                  {this.props.result.name}
+                </h3>
                 <div style={{fontFamily: "Lora", fontSize: "18px"}}>
-                  {this.props.result.description}
+                  {this.props.result.about}
                 </div>
-                <div className="pt-2 text-primary">
-                  {this.props.result.min_players}-{this.props.result.max_players} players |&nbsp;ages {this.props.result.min_age}+&nbsp;|&nbsp;
-                  {this.props.result.playing_time} mins
+                <div className="mt-3 text-primary">
+                  {players} | {age} | {mins}
                 </div>
               </div>
             </div>
           </Row>
         </Container>
         <Navbar color="light" className="fixed-bottom p-3">
-          <Link to="/curve">
+          <Link to="/complexity">
             <Button className="pt-2 pb-2 text-muted" color="light">
                 &larr; Back
             </Button>
           </Link>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Button outline className="pl-4 pr-4 pt-2 pb-2 text-muted">
-                Reset
-              </Button>
+              <Link to="/">
+                <Button outline className="pl-4 pr-4 pt-2 pb-2 text-muted">
+                  Reset
+                </Button>
+              </Link>
               <Button
                 color="success"
                 className="pl-4 pr-4 pt-2 pb-2 ml-3"
@@ -79,18 +87,19 @@ class Result extends Component {
                   <div className="text-muted" style={{fontSize: "18px"}}>
                     Location
                   </div>
-                  <div style={{fontSize: "64px"}}>
-                    Shelf W2
+                  <div style={{fontSize: "60px"}}>
+                    Shelf {this.props.result.location}
                   </div>
                 </ModalHeader>
                 <ModalFooter>
-                  <Button
-                    color="primary"
-                    onClick={this.toggle.bind(this)}
-                    className="pl-4 pr-4 pt-2 pb-2 ml-3"
-                  >
-                      Got it!
-                  </Button>
+                  <Link to="/">
+                    <Button
+                      color="primary"
+                      className="pl-4 pr-4 pt-2 pb-2 ml-3"
+                    >
+                        Got it!
+                    </Button>
+                  </Link>
                 </ModalFooter>
               </Modal>
             </NavItem>

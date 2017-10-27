@@ -4,7 +4,7 @@ import Home from './Home';
 import Players from './Players';
 import Duration from './Duration';
 import Ages from './Ages';
-import Curve from './Curve';
+import Complexity from './Complexity';
 
 const Main = props => (
   <main>

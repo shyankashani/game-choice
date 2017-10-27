@@ -55,7 +55,7 @@ const Duration = props => (
         </Col>
       </Row>
     </Container>
-    <Footer prev="/age" next="/curve" />
+    <Footer prev="/age" next="/complexity" />
   </div>
 )
 

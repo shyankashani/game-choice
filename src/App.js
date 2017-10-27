@@ -6,7 +6,7 @@ import Home from './Home';
 import Players from './Players';
 import Duration from './Duration';
 import Age from './Age';
-import Curve from './Curve';
+import Complexity from './Complexity';
 import Result from './Result';
 import Footer from './Footer';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
@@ -19,8 +19,8 @@ class App extends Component {
     this.state = {
       players: 4,
       age: 8,
-      duration: 2,
-      curve: 2,
+      duration: 1,
+      complexity: 1,
       result: {
         name: '',
         image_url: 'https://www.onegoalgraduation.org/wp-content/uploads/2016/07/gray_square.png',
@@ -53,11 +53,29 @@ class App extends Component {
     })
   }
 
+  reset() {
+    this.setState({
+      players: 4,
+      age: 8,
+      duration: 1,
+      complexity: 1,
+      result: {
+        name: '',
+        image_url: 'https://www.onegoalgraduation.org/wp-content/uploads/2016/07/gray_square.png',
+        description: ''
+      }
+    })
+  }
+
   getGame() {
-    axios.get(`http://localhost:3000/result/${this.state.players}/${this.state.age}/${this.state.duration}/${this.state.curve}/`)
+    console.log(this.state);
+    axios.get(`http://localhost:3000/result/${this.state.players}/${this.state.age}/${this.state.duration}/${this.state.complexity}/`)
     .then(result => {
-      console.log(result.data[0]);
-      this.setState({ result: result.data[0] })
+      console.log(result.data)
+      if (result.data.length) {
+        let random = Math.floor(Math.random() * result.data.length);
+        this.setState({ result: result.data[random] })
+      }
     })
   }
 
@@ -76,7 +94,11 @@ class App extends Component {
           mapStyles={styles => ({ transform: `translateX(${styles.offset}%)` })}
           className="switch-wrapper"
           >
-          <Route exact path='/' render={() => <Home criteria={this.state} />} />
+          <Route
+            exact
+            path='/'
+            render={() => <Home criteria={this.state} reset={this.reset.bind(this)} />}
+          />
           <Route
             path='/players'
             render={() => <Players criteria={this.state} increment={this.increment.bind(this)} decrement={this.decrement.bind(this)} />}
@@ -90,12 +112,12 @@ class App extends Component {
             render={() => <Duration setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
-            path='/curve'
-            render={() => <Curve setCriteria={this.setCriteria.bind(this)} />}
+            path='/complexity'
+            render={() => <Complexity setCriteria={this.setCriteria.bind(this)} />}
           />
           <Route
             path='/result'
-            render={() => <Result result={this.state.result} getGame={this.getGame.bind(this)}  />}
+            render={() => <Result result={this.state.result} getGame={this.getGame.bind(this)} />}
           />
       </Switch>
       </div>

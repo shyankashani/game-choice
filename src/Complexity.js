@@ -2,13 +2,13 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import Footer from './Footer';
 
-const Curve = props => (
+const Complexity = props => (
   <div>
     <Container className="text-center p-5">
       <Row className="p-5 mt-5">
         <Col>
           <h3>
-            How steep should the learning curve be?
+            How steep should the learning complexity be?
           </h3>
         </Col>
       </Row>
@@ -20,7 +20,7 @@ const Curve = props => (
               color="success"
               className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
               size="lg"
-              onClick={() => props.setCriteria('curve', 1)}
+              onClick={() => props.setCriteria('complexity', 1)}
             >
               Gentle
             </Button>
@@ -29,7 +29,7 @@ const Curve = props => (
               color="warning"
               className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
               size="lg"
-              onClick={() => props.setCriteria('curve', 2)}
+              onClick={() => props.setCriteria('complexity', 2)}
             >
               Medium
             </Button>
@@ -38,7 +38,7 @@ const Curve = props => (
               color="danger"
               className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
               size="lg"
-              onClick={() => props.setCriteria('curve', 3)}
+              onClick={() => props.setCriteria('complexity', 3)}
             >
               Brutal
             </Button>
@@ -50,4 +50,4 @@ const Curve = props => (
   </div>
 )
 
-export default Curve;
+export default Complexity;
