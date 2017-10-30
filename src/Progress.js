@@ -10,36 +10,43 @@ class Progress extends Component {
 
   render() {
 
+    const circleClasses = 'text-center';
+    const circleStyles = {width: "80px"};
+
+    const valueClasses = 'm-auto border border-primary rounded-circle bg-primary text-white text-center';
+    const valueStyles = {width: "24px", height: "24px", fontSize: "14px"};
+
+    const labelClasses = 'm-auto text-muted';
+    const labelStyles = {fontSize: "11px", padding: "2px 0 0 0"};
+
+    const stages = ['players', 'age', 'duration', 'complexity'];
     const circles = [];
-    for (let i = 0; i < Object.keys(this.props.criteria).length - 1; i++) {
 
-      let value = this.props.criteria[Object.keys(this.props.criteria)[i]];
-      let label = [];
-      if (Object.keys(this.props.criteria)[i] === 'players') {
-        label.push('players')
-      } else if (Object.keys(this.props.criteria)[i] === 'age') {
-        label.push('min age')
-      } else if (Object.keys(this.props.criteria)[i] === 'duration') {
-        label.push('minutes')
-      } else {
-        label.push('tufness')
-      }
-
+    for (let i = 0; i < this.props.criteria.stage; i++) {
       circles.push(
-        <div style={{width: "80px"}} className="text-center">
-          <div
-            className="m-auto border border-primary rounded-circle bg-primary text-white text-center"
-            style={{width: "24px", height: "24px", fontSize: "14px"}}
-          >
-            {value}
+        <div style={circleStyles} className={circleClasses}>
+          <div className={valueClasses} style={valueStyles}>
+            {this.props.criteria[stages[i]]}
           </div>
-          <div className="m-auto text-muted" style={{fontSize: "11px", padding: "2px 0 0 0"}}>
-            {label}
+          <div className={labelClasses} style={labelStyles}>
+            {stages[i]}
           </div>
         </div>
       )
     }
 
+    for (let j = this.props.criteria.stage; j < 4; j++) {
+      circles.push(
+        <div style={circleStyles} className={circleClasses}>
+          <div className='m-auto border border-primary rounded-circle text-white text-center' style={valueStyles}>
+            &nbsp;
+          </div>
+          <div className={labelClasses} style={labelStyles}>
+            &nbsp;
+          </div>
+        </div>
+      )
+    }
 
     return (
         <div className="d-flex justify-content-around">

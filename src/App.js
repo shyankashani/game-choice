@@ -21,6 +21,7 @@ class App extends Component {
       age: 8,
       duration: 1,
       complexity: 1,
+      stage: 3,
       result: {
         name: '',
         image_url: 'https://www.onegoalgraduation.org/wp-content/uploads/2016/07/gray_square.png',
