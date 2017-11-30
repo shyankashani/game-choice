@@ -17,17 +17,29 @@ class App extends Component {
   }
 
   incAnswer(questionId) {
-    this.setState(state => {
-      state.questions[questionId].answer = state.questions[questionId].answer + 1;
-      return state;
-    })
+    let newAnswer = this.state.questions[questionId].answer + 1;
+    let minAnswer = this.state.questions[questionId].minAnswer;
+    let maxAnswer = this.state.questions[questionId].maxAnswer;
+
+    if (minAnswer <= newAnswer && newAnswer <= maxAnswer) {
+      this.setState(state => {
+        state.questions[questionId].answer = newAnswer;
+        return state;
+      })
+    }
   }
 
   decAnswer(questionId) {
-    this.setState(state => {
-      state.questions[questionId].answer = state.questions[questionId].answer - 1;
-      return state
-    })
+    let newAnswer = this.state.questions[questionId].answer - 1;
+    let minAnswer = this.state.questions[questionId].minAnswer;
+    let maxAnswer = this.state.questions[questionId].maxAnswer;
+
+    if (minAnswer <= newAnswer && newAnswer <= maxAnswer) {
+      this.setState(state => {
+        state.questions[questionId].answer = newAnswer;
+        return state
+      })
+    }
   }
 
   setAnswer(questionId, answerId) {
