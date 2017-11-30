@@ -18,8 +18,8 @@ const Age = props => (
           <Input
             criteria="age"
             data={props.criteria.age}
-            increment={props.increment}
-            decrement={props.decrement}
+            incAnswer={props.incAnswer}
+            decAnswer={props.decAnswer}
           />
         </Col>
       </Row>
@@ -31,7 +31,7 @@ const Age = props => (
         </Col>
       </Row>
     </Container>
-    <Footer prev="/players" next="/duration" curr="/age" criteria={props.criteria} />
+    <Footer prev="/players" next="/duration" curr="/age" criteria={props.criteria} stage={50} />
   </div>
 )
 
