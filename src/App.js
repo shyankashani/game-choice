@@ -7,7 +7,7 @@ import Result from './Result';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
 
-const API_URL = API_URL || 'http://localhost:3000/';
+const API_URL = process.env.API_URL || 'http://localhost:3000/';
 
 class App extends Component {
 
