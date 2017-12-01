@@ -11,7 +11,7 @@ class ResultModal extends Component {
             Location
           </div>
           <div style={{fontSize: "60px"}}>
-            Shelf location
+            {this.props.location}
           </div>
         </ModalHeader>
         <ModalFooter>

@@ -17,7 +17,7 @@ class Result extends Component {
         <div>
           <ResultBody result={this.props.result} />
           <ResultFooter toggleModal={this.props.toggleModal} />
-          <ResultModal modal={this.props.modal} toggleModal={this.props.toggleModal} />
+          <ResultModal location={this.props.result.location} modal={this.props.modal} toggleModal={this.props.toggleModal} />
         </div>
       )
     } else {
