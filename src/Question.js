@@ -10,6 +10,10 @@ class Question extends Component {
     let questions = this.props.questions;
     let questionId = this.props.questionId;
 
+    let allQuestions = Object.keys(questions).length;
+    let currQuestion = questionId;
+    let percentComplete = (currQuestion / allQuestions) * 100;
+
     let currQues = questions[questionId];
     let prevQues = questions[questionId - 1];
     let nextQues = questions[questionId + 1];
@@ -66,10 +70,14 @@ class Question extends Component {
             </Col>
           </Row>
         </Container>
-        <Footer prevPath={prevPath} nextPath={nextPath} />
+        <Footer
+          prevPath={prevPath}
+          nextPath={nextPath}
+          percentComplete={percentComplete}
+        />
       </div>
     );
-    
+
   }
 }
 
