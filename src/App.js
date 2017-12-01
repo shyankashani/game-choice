@@ -7,7 +7,13 @@ import Result from './Result';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000/';
+let API_URL;
+
+if (window.location.href.includes('localhost')) {
+  API_URL = 'http://localhost:3000/'
+} else {
+  API_URL = 'https://game-choice-api.herokuapp.com/'
+}
 
 class App extends Component {
 
@@ -81,7 +87,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('process.env', process.env);
     this.getQuestions();
   }
 
