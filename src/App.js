@@ -7,6 +7,8 @@ import Result from './Result';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
 
+const API_URL = API_URL || 'http://localhost:3000/';
+
 class App extends Component {
 
   constructor(props) {
@@ -54,7 +56,7 @@ class App extends Component {
   reset() {}
 
   getQuestions() {
-    axios.get(`http://localhost:3000/questions`)
+    axios.get(API_URL + 'questions')
     .then(result => {
       console.log('getQuestions', result.data)
       this.setState({ questions: result.data })
@@ -67,7 +69,7 @@ class App extends Component {
       params += `/${this.state.questions[questionId].answer}`;
     }
 
-    axios.get('http://localhost:3000/result/2/2/2/18')
+    axios.get(API_URL + 'result/2/2/2/18')
     .then(result => {
       console.log('getGame', result.data);
       this.setState({ result: result.data })
