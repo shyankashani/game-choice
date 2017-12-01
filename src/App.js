@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Question from './Question';
+import Result from './Result';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
 
@@ -49,19 +50,7 @@ class App extends Component {
     })
   }
 
-  reset() {
-    this.setState({
-      players: 4,
-      age: 8,
-      duration: 1,
-      complexity: 1,
-      result: {
-        name: '',
-        image_url: 'https://www.onegoalgraduation.org/wp-content/uploads/2016/07/gray_square.png',
-        description: ''
-      }
-    })
-  }
+  reset() {}
 
   getQuestions() {
     axios.get(`http://localhost:3000/questions`)
@@ -72,12 +61,14 @@ class App extends Component {
   }
 
   getGame() {
-    axios.get(`http://localhost:3000/result/${this.state.players}/${this.state.age}/${this.state.duration}/${this.state.complexity}/`)
+    let params = '';
+    for (let questionId in this.state.questions) {
+      params += `/${this.state.questions[questionId].answer}`;
+    }
+
+    axios.get('http://localhost:3000/result' + params)
     .then(result => {
-      if (result.data.length) {
-        let random = Math.floor(Math.random() * result.data.length);
-        this.setState({ result: result.data[random] })
-      }
+      console.log('getGame', result);
     })
   }
 
@@ -86,11 +77,21 @@ class App extends Component {
   }
 
   render() {
-    let routes = [ <Route exact path='/' render={() => <Home />} key='/' /> ];
+    let routes = [
+      <Route
+        path='/'
+        render={() => <Home /> }
+        key='/'
+        exact
+      />
+    ];
+
     for (let questionId in this.state.questions) {
+      let path = `/${this.state.questions[questionId].criterion}`
+
       routes.push(
         <Route
-          path={this.state.questions[questionId].path}
+          path={path}
           render={() =>
             <Question
               questions={this.state.questions}
@@ -101,10 +102,23 @@ class App extends Component {
               decAnswer={this.decAnswer.bind(this)}
             />
           }
-          key={this.state.questions[questionId].path}
+          key={path}
         />
-      )
+      );
     }
+
+    routes.push(
+      <Route
+        path='/result'
+        render={() =>
+          <Result
+            result={this.state.result}
+            getGame={this.getGame.bind(this)}
+          />
+        }
+        key='/result'
+      />
+    );
 
     return (
       <div className="text-dark">

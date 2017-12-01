@@ -21,40 +21,24 @@ class Result extends Component {
     this.props.getGame();
   }
 
-  render(){
-
-    const mins = [];
-    if (this.props.result.duration === 1) {
-      mins.push('< 15 mins')
-    } else if (this.props.result.duration === 2) {
-      mins.push('15-45 min')
-    } else if (this.props.result.duration === 3) {
-      mins.push('45-90 min')
-    } else {
-      mins.push('90 mins +')
-    }
-
-    const age = `age ${this.props.result.age}+`;
-
-    const players = `${this.props.result.minPlayers}-${this.props.result.maxPlayers} players`;
-
+  render() {
     return (
       <div>
         <Container className="text-center p-5">
           <Row className="mt-5 pt-5">
             <div className="d-flex justify-content-center pl-5 pr-5 text-left">
               <div>
-                <img src={this.props.result.image} style={{width: "240px"}} />
+                <img style={{width: "240px"}} />
               </div>
               <div className="pl-5">
                 <h3 className="mb-3">
-                  {this.props.result.name}
+                  'Name'
                 </h3>
                 <div style={{fontFamily: "Lora", fontSize: "18px"}}>
-                  {this.props.result.about}
+                  'About'
                 </div>
                 <div className="mt-3 text-primary">
-                  {players} | {age} | {mins}
+                  'monkey'
                 </div>
               </div>
             </div>
@@ -88,7 +72,7 @@ class Result extends Component {
                     Location
                   </div>
                   <div style={{fontSize: "60px"}}>
-                    Shelf {this.props.result.location}
+                    Shelf location
                   </div>
                 </ModalHeader>
                 <ModalFooter>
@@ -108,8 +92,6 @@ class Result extends Component {
       </div>
     )
   }
-
 }
-
 
 export default Result;

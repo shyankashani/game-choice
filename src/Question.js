@@ -19,8 +19,8 @@ class Question extends Component {
     let prevPath;
     let nextPath;
 
-    if (prevQues) { prevPath = prevQues.path; } else { prevPath = '/'; }
-    if (nextQues) { nextPath = nextQues.path; } else { nextPath = '/results'; }
+    if (prevQues) { prevPath = `/${prevQues.criterion}`; } else { prevPath = '/'; }
+    if (nextQues) { nextPath = `/${nextQues.criterion}`; } else { nextPath = '/result'; }
 
     let inputs = [];
 
@@ -68,7 +68,8 @@ class Question extends Component {
         </Container>
         <Footer prevPath={prevPath} nextPath={nextPath} />
       </div>
-    )
+    );
+    
   }
 }
 
