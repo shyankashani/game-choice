@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Footer extends Component {
   render() {
     return (
-      <div className="fixed-bottom bg-light" >
+      <div className="fixed-bottom bg-light">
         <Progress value={this.props.stage} style={{height: "2px"}} />
         <div className="d-flex justify-content-between p-3">
           <div>

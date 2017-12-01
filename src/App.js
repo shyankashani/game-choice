@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       questions: null,
-      result: null
+      result: null,
+      modal: false
     }
   }
 
@@ -66,10 +67,15 @@ class App extends Component {
       params += `/${this.state.questions[questionId].answer}`;
     }
 
-    axios.get('http://localhost:3000/result' + params)
+    axios.get('http://localhost:3000/result/2/2/2/18')
     .then(result => {
-      console.log('getGame', result);
+      console.log('getGame', result.data);
+      this.setState({ result: result.data })
     })
+  }
+
+  toggleModal() {
+    this.setState({ modal: !this.state.modal });
   }
 
   componentDidMount() {
@@ -88,7 +94,6 @@ class App extends Component {
 
     for (let questionId in this.state.questions) {
       let path = `/${this.state.questions[questionId].criterion}`
-
       routes.push(
         <Route
           path={path}
@@ -113,7 +118,9 @@ class App extends Component {
         render={() =>
           <Result
             result={this.state.result}
+            modal={this.state.modal}
             getGame={this.getGame.bind(this)}
+            toggleModal={this.toggleModal.bind(this)}
           />
         }
         key='/result'
