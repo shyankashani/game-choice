@@ -72,10 +72,10 @@ class App extends Component {
   getGame() {
     let params = '';
     for (let questionId in this.state.questions) {
-      params += `/${this.state.questions[questionId].answer}`;
+      params = params + `/${this.state.questions[questionId].answer}`;
     }
 
-    axios.get(API_URL + 'result/2/2/2/18')
+    axios.get(API_URL + 'result' + params)
     .then(result => {
       console.log('getGame', result.data);
       this.setState({ result: result.data })
