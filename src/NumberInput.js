@@ -1,5 +1,5 @@
 import React from 'react';
-import CircleButton from './CircleButton';
+import CircleButton from './buttons/CircleButton';
 import Plus from 'react-icons/lib/go/plus';
 import Dash from 'react-icons/lib/go/dash';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import colorSequence from './utils/colorSequence.js'
+import colorSequence from '../utils/colorSequence.js'
 
-const ButtonInput = props => (
+const AnswerButton = props => (
   <Button
     outline
     color={colorSequence[props.answerId]}
@@ -14,4 +14,4 @@ const ButtonInput = props => (
   </Button>
 )
 
-export default ButtonInput;
+export default AnswerButton;

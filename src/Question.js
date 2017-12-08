@@ -1,37 +1,24 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import NumberInput from './NumberInput';
-import ButtonInput from './ButtonInput';
+import AnswerButton from './buttons/AnswerButton';
 import Footer from './Footer';
+import pathFinder from './utils/pathFinder';
+import percentCalculator from './utils/percentCalculator';
 
 class Question extends Component {
   render() {
 
-    let questions = this.props.questions;
     let questionId = this.props.questionId;
-
-    let allQuestions = Object.keys(questions).length;
-    let currQuestion = questionId;
-    let percentComplete = (currQuestion / allQuestions) * 100;
-
-    let currQues = questions[questionId];
-    let prevQues = questions[questionId - 1];
-    let nextQues = questions[questionId + 1];
-
-    let answers = currQues.answers;
-
-    let prevPath;
-    let nextPath;
-
-    if (prevQues) { prevPath = `/${prevQues.criterion}`; } else { prevPath = '/'; }
-    if (nextQues) { nextPath = `/${nextQues.criterion}`; } else { nextPath = '/result'; }
+    let questions = this.props.questions;
+    let answers = questions[questionId].answers;
 
     let inputs = [];
 
     if (answers) {
       for (let answerId in answers) {
         inputs.push(
-          <ButtonInput
+          <AnswerButton
             answerId={answerId}
             questionId={questionId}
             text={answers[answerId].text}
@@ -71,9 +58,9 @@ class Question extends Component {
           </Row>
         </Container>
         <Footer
-          prevPath={prevPath}
-          nextPath={nextPath}
-          percentComplete={percentComplete}
+          prevPath={pathFinder.prevPath(questionId, questions)}
+          nextPath={pathFinder.nextPath(questionId, questions)}
+          percentComplete={percentCalculator(questionId, questions)}
         />
       </div>
     );
