@@ -4,6 +4,31 @@ import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   render() {
+
+    let nextPathButton = [];
+
+    if (this.props.nextPathEnabled) {
+      if (this.props.nextPath === '/result') {
+        nextPathButton.push(
+          <Button className="pl-4 pr-4 pt-2 pb-2 ml-3" color="success"> Complete </Button>
+        );
+      } else {
+        nextPathButton.push(
+          <Button className="pl-4 pr-4 pt-2 pb-2 ml-3" color="primary"> Continue </Button>
+        );
+      }
+    } else {
+      if (this.props.nextPath === '/result') {
+        nextPathButton.push(
+          <Button disabled className="pl-4 pr-4 pt-2 pb-2 ml-3" color="success"> Complete </Button>
+        );
+      } else {
+        nextPathButton.push(
+          <Button disabled className="pl-4 pr-4 pt-2 pb-2 ml-3" color="primary"> Continue </Button>
+        );
+      }
+    }
+
     return (
       <div className="fixed-bottom bg-light">
         <Progress value={this.props.percentComplete} style={{height: "2px"}} />
@@ -17,10 +42,7 @@ class Footer extends Component {
           </div>
           <div>
             <Link to={this.props.nextPath}>
-              { this.props.nextPath === '/result'
-                ? <Button className="pl-4 pr-4 pt-2 pb-2 ml-3" color="success"> Complete </Button>
-                : <Button className="pl-4 pr-4 pt-2 pb-2 ml-3" color="primary"> Continue </Button>
-            }
+              {nextPathButton}
           </Link>
         </div>
       </div>

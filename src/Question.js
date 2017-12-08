@@ -32,6 +32,7 @@ class Question extends Component {
         <NumberInput
           questionId={questionId}
           answer={this.props.answer}
+          minAnswer={this.props.questions[questionId].minAnswer}
           incAnswer={this.props.incAnswer}
           decAnswer={this.props.decAnswer}
           key={0}
@@ -60,6 +61,7 @@ class Question extends Component {
         <Footer
           prevPath={pathFinder.prevPath(questionId, questions)}
           nextPath={pathFinder.nextPath(questionId, questions)}
+          nextPathEnabled={questions[questionId].answer}
           percentComplete={percentCalculator(questionId, questions)}
         />
       </div>
