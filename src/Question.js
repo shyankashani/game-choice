@@ -19,6 +19,7 @@ class Question extends Component {
       for (let answerId in answers) {
         inputs.push(
           <AnswerButton
+            isSelected={answerId === this.props.answer}
             answerId={answerId}
             questionId={questionId}
             text={answers[answerId].text}
