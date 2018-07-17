@@ -8,19 +8,19 @@ const AnswerButton = props => {
     return (
       <Button
         color={colorSequence[props.answerId]}
-        className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+        className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3 badge-pill"
         size="lg"
         onClick={() => props.setAnswer(props.questionId, props.answerId)}
         >
         {props.text}
       </Button>
     );
-  } else {    
+  } else {
     return (
       <Button
         outline
         color={colorSequence[props.answerId]}
-        className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3"
+        className="pl-4 pr-4 pt-2 pb-2 mr-3 ml-3 badge-pill"
         size="lg"
         onClick={() => props.setAnswer(props.questionId, props.answerId)}
         >

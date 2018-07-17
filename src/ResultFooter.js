@@ -17,7 +17,10 @@ class ResultBody extends Component {
           </div>
           <div>
             <Link to="/">
-              <Button outline className="pl-4 pr-4 pt-2 pb-2 text-muted"> Reset </Button>
+              <Button outline className="pl-4 pr-4 pt-2 pb-2 ml-3 text-muted"> Refresh </Button>
+            </Link>
+            <Link to="/">
+              <Button outline className="pl-4 pr-4 pt-2 pb-2 ml-3 text-muted"> Reset </Button>
             </Link>
             <Button
               color="success"

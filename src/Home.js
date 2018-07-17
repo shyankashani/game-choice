@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
+  componentDidMount() {
+    this.props.getQuestions();
+  }
+
   render() {
     return (
       <Container className="text-center p-5">
@@ -16,8 +20,8 @@ class Home extends Component {
         </Row>
         <Row className="mt-5 p-5">
           <Col>
-            <Link to="/duration">
-              <Button size="lg" color="primary" className="pl-4 pr-4 pt-2 pb-2">
+            <Link to="/duration=">
+              <Button size="lg" color="primary" className="pl-4 pr-4 pt-2 pb-2 badge-pill">
                 Get Started
               </Button>
             </Link>

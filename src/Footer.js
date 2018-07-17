@@ -10,21 +10,21 @@ class Footer extends Component {
     if (this.props.nextPathEnabled) {
       if (this.props.nextPath === '/result') {
         nextPathButton.push(
-          <Button key={0} className="pl-4 pr-4 pt-2 pb-2 ml-3" color="success"> Complete </Button>
+          <Button key={0} className="pl-4 pr-4 pt-2 pb-2 ml-3 badge-pill" color="success"> Complete </Button>
         );
       } else {
         nextPathButton.push(
-          <Button key={1} className="pl-4 pr-4 pt-2 pb-2 ml-3" color="primary"> Continue </Button>
+          <Button key={1} className="pl-4 pr-4 pt-2 pb-2 ml-3 badge-pill" color="primary"> Continue </Button>
         );
       }
     } else {
       if (this.props.nextPath === '/result') {
         nextPathButton.push(
-          <Button disabled key={2} className="pl-4 pr-4 pt-2 pb-2 ml-3" color="success"> Complete </Button>
+          <Button disabled key={2} className="pl-4 pr-4 pt-2 pb-2 ml-3 badge-pill" color="success"> Complete </Button>
         );
       } else {
         nextPathButton.push(
-          <Button disabled key={3} className="pl-4 pr-4 pt-2 pb-2 ml-3" color="primary"> Continue </Button>
+          <Button disabled key={3} className="pl-4 pr-4 pt-2 pb-2 ml-3 badge-pill" color="primary"> Continue </Button>
         );
       }
     }

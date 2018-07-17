@@ -6,6 +6,7 @@ import Question from './Question';
 import Result from './Result';
 import PrimitiveDot from 'react-icons/lib/go/primitive-dot';
 import axios from 'axios';
+import queryString from 'query-string';
 
 let API_URL;
 
@@ -74,6 +75,7 @@ class App extends Component {
     for (let questionId in this.state.questions) {
       params = params + `/${this.state.questions[questionId].answer}`;
     }
+    console.log('params', params)
 
     axios.get(API_URL + 'result' + params)
     .then(result => {
@@ -87,14 +89,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getQuestions();
+    console.log('monkey', queryString.parse(window.location.search));
   }
 
   render() {
     let routes = [
       <Route
         path='/'
-        render={() => <Home /> }
+        render={() => <Home getQuestions={this.getQuestions.bind(this)} /> }
         key='/'
         exact
       />
